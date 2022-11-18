@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+import "@fontsource/lato/400.css";
 
 export const themeProvider = extendTheme({
 	styles: {
@@ -20,7 +21,9 @@ export const themeProvider = extendTheme({
 			},
 			body: {
 				bg: "#000",
-				color: "red",
+				color: "#fff",
+				fontFamily:"'Lato', sans-serif",
+				fontWeight:"400",
 			},
 			a: {
 				textDecoration: "none",

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { imgUrl } from "../../services/variables";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/footer/footer";
@@ -11,11 +11,10 @@ import { Store } from "./store";
 
 const Home: React.FC = () => {
 	const store = useLocalObservable(() => new Store());
-	const [search, setSearch] = useState("");
 
 	useEffect(() => {
 		store.moviesShelf.fetchPage(1);
-	}, [store, search]);
+	}, [store]);
 
 	return (
 		<Movies>
@@ -23,14 +22,6 @@ const Home: React.FC = () => {
 				<span>Loading</span>
 			) : (
 				<>
-					<input
-						type="text"
-						placeholder="Search a movie..."
-						id="search-bar"
-						value={search}
-						onChange={(e) => setSearch(e.target.value)}
-					/>
-
 					<PageMenu
 						page={store.moviesShelf.page}
 						onNextPage={store.moviesShelf.nextPage}

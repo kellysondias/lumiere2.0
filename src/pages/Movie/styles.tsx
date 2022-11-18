@@ -14,9 +14,10 @@ export const MovieSection = styled.section`
 
 export const MoviePage = styled.div`
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row-reverse wrap;
     justify-content: space-evenly;
     align-items: center;
+    padding-top: 5rem;
     
     h1,h2 {
         color: #f5c518;

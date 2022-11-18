@@ -12,7 +12,9 @@ export const Movies = ({children}: IProps) => (
 		color="#fff"
 		bg="#000"
 		w="90%"
+		position="relative"
 		m="0 auto"
+		mt="50px"
 	>
 		<Heading
 			size="2xl"

@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { imgUrl } from "../../services/variables";
 import { Footer } from "../../components/footer/footer";
-import { MovieSection, MoviePage } from "./styles";
+import { MoviePage } from "./styles";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import { Store } from "./store";
+import { Flex } from "@chakra-ui/react";
 
 const Movie: React.FC = () => {
 	const { id } = useParams();
@@ -15,7 +16,12 @@ const Movie: React.FC = () => {
 	}, [store.movieShelf]);
 
 	return (
-		<MovieSection>
+		<Flex
+			direction="column"
+			justify="center"
+			m="0 auto"
+			w="90%"
+		>
 			{store.movieShelf.loader.isLoading ? (
 				<span>Loading</span>
 			) : !store.movieShelf.hasModel ? (
@@ -68,7 +74,7 @@ const Movie: React.FC = () => {
 					<Footer />
 				</>
 			)}
-		</MovieSection>
+		</Flex>
 	);
 };
 
