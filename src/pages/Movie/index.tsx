@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { imgUrl } from "../../services/variables";
-import { Footer } from "../../components/footer/footer";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import { Store } from "./store";
 import {
