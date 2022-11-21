@@ -25,6 +25,7 @@ export const Header: React.FC = () => {
 			<Link to="/">
 				<Heading
 					fontWeight="400"
+					size="md"
 				>LUMIÈRE
 				</Heading>
 			</Link>
@@ -33,9 +34,9 @@ export const Header: React.FC = () => {
 				<Input
 					border="none"
 					w="55px"
-					fontSize="2xl"
 					variant="unstyled"
 					type="text"
+					fontSize="md"
 					placeholder="FILTER"
 					id="search-bar"
 					value={search}
@@ -46,7 +47,7 @@ export const Header: React.FC = () => {
 					border="none"
 				>
 					<SearchIcon
-						fontSize="18px"
+						fontSize="10px"
 					/>
 				</InputRightAddon>
 			</InputGroup>

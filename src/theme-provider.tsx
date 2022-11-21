@@ -7,6 +7,7 @@ export const themeProvider = extendTheme({
 			padding: "0",
 			margin: "0",
 			textDecoration: "none",
+			borderBottom: "none",
 			_before: {
 				boxSizing: "border-box",
     			textDecoration: "none",
@@ -28,6 +29,7 @@ export const themeProvider = extendTheme({
 			a: {
 				textDecoration: "none",
 				color: "#fff",
+				border:"none",
 			},
 			ol: {
 				listStyle: "none",

@@ -2,10 +2,21 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { imgUrl } from "../../services/variables";
 import { Footer } from "../../components/footer/footer";
-import { MoviePage } from "./styles";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import { Store } from "./store";
-import { Flex } from "@chakra-ui/react";
+import {
+	Box,
+	Flex,
+	Spinner,
+	Heading,
+	Image,
+	Text,
+	List,
+	ListItem,
+	Link,
+} from "@chakra-ui/react";
+import { Button } from "../../components/button/button";
+import { BsPlay } from "react-icons/bs";
 
 const Movie: React.FC = () => {
 	const { id } = useParams();
@@ -18,60 +29,126 @@ const Movie: React.FC = () => {
 	return (
 		<Flex
 			direction="column"
-			justify="center"
 			m="0 auto"
 			w="90%"
 		>
 			{store.movieShelf.loader.isLoading ? (
-				<span>Loading</span>
+				<Spinner
+					m="5rem auto"
+				/>
 			) : !store.movieShelf.hasModel ? (
-				<span>Loading</span>
+				<Spinner
+					m="5rem auto"
+				/>
 			) : (
 				<>
-					<MoviePage>
-						<div className="poster">
-							<img
+					<Flex
+						wrap="wrap"
+						justify="space-evenly"
+						p="5rem 0 1rem 0"
+					>
+
+						<Flex
+							direction="column"
+							textAlign="left"
+							w="50%"
+							// bg="red"
+						>
+							<Text
+								fontSize="2.5rem"
+								mb="0.5rem"
+								color="#ff0000"
+							>
+								{store.movieShelf.fetchedModel.vote_average.toFixed(1)}
+							</Text>
+
+							<Flex wrap="wrap" align="center">
+								<Heading
+									fontWeight="500"
+									size="4xl"
+									mr="1.9rem"
+								>
+									{store.movieShelf.fetchedModel.title}
+								</Heading>
+								<Text
+									as="span"
+									fontSize="6xl"
+									color="#979394c2"
+								>
+									{store.movieShelf.fetchedModel.release_date.slice(0,4)}
+								</Text>
+							</Flex>
+
+							<Box
+								as="header"
+								color="#979394c2"
+								p="0.5rem 0 1.5rem 0"
+							>
+								<Flex
+									wrap="wrap"
+									align="center"
+								>
+									<List
+										display="flex"
+										textAlign="center"
+										flexWrap="wrap"
+									>
+										{store.movieShelf.fetchedModel.genres.map((genre, index) => (
+											<ListItem
+												pr="1.5rem"
+												key={index}
+											>
+												{genre.name.toUpperCase()}
+											</ListItem>
+										))}
+									</List>
+								</Flex>
+							</Box>
+
+							<Flex
+								direction="column"
+								justify="center"
+								align="center"
+							>
+								<Text
+									color="#979394c2"
+									fontSize="2xl"
+									mb="2.5rem"
+								>
+									{store.movieShelf.fetchedModel.overview}
+								</Text>
+							</Flex>
+
+							<Link
+								color="#000"
+								pb="1.5rem"
+								isExternal
+								href={`https://www.youtube.com/results?search_query=${store.movieShelf.fetchedModel.title} Official Trailer`}
+							>
+								<Button
+									leftIcon={<BsPlay fontSize="1.8rem" />}
+									text="TRAILER"
+									fontSize="md"
+									variant="outline"
+									w="72px"
+									p="1.5rem 5rem"
+									color="#ffffffbf"
+									borderColor="#ffffffbf"
+								/>
+							</Link>
+
+						</Flex>
+
+						<Box
+							w="100%"
+							maxW="250px"
+						>
+							<Image
 								src={`${imgUrl}${store.movieShelf.fetchedModel.poster_path}`}
-								alt={`${store.movieShelf.fetchedModel.title}'s poster`}
+								alt={`${store.movieShelf.fetchedModel.title}'s image`}
 							/>
-						</div>
-
-						<div className="info">
-							<header>
-								<div>
-									<h1>{store.movieShelf.fetchedModel.title}</h1>
-									<span>
-										<i className="release-date">
-											({store.movieShelf.fetchedModel.release_date})
-										</i>
-									</span>
-								</div>
-
-								<div className="rate">
-									<i className="fa-solid fa-star" />
-									<span>{store.movieShelf.fetchedModel.vote_average.toFixed(1)}</span>
-								</div>
-							</header>
-
-							<main className="synopsis">
-								<span>
-									<i>{store.movieShelf.fetchedModel.tagline}</i>
-								</span>
-								<p>{store.movieShelf.fetchedModel.overview}</p>
-							</main>
-
-							<div className="genres">
-								<h2>Genres:</h2>
-								<ul>
-									{store.movieShelf.fetchedModel.genres.map((genre, index) => (
-										<li key={index}>{genre.name}</li>
-									))}
-								</ul>
-							</div>
-						</div>
-					</MoviePage>
-
-					<Footer />
+						</Box>
+					</Flex>
 				</>
 			)}
 		</Flex>

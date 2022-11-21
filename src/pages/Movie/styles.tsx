@@ -1,17 +1,5 @@
 import styled from "styled-components";
 
-export const MovieSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1.3rem auto;
-
-  .spinner {
-    margin: 5rem auto;
-  }
-`;
-
 export const MoviePage = styled.div`
     display: flex;
     flex-flow: row-reverse wrap;
@@ -37,6 +25,7 @@ export const MoviePage = styled.div`
         display: flex;
         flex-flow: row wrap;
         align-items: center;
+        color: red;
     }
 
     .info div:first-child h1 {

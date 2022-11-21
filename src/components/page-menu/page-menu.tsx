@@ -16,18 +16,22 @@ export const PageMenu: React.FC<IProps> = ({
 }) => (
 	<Menu
 		m="0 auto 2rem auto"
-		fontSize="1.5rem"
 		alignItems="center"
 	>
 		<Button
-			icon={<ChevronLeftIcon />}
+			leftIcon={<ChevronLeftIcon fontSize="5rem" />}
 			bg="#000"
 			hoverColor="#f5c518"
 			event={onPreviousPage}
 		/>
-		<Text as="span">{`Page ${page}`}</Text>
+		<Text
+			as="span"
+			fontSize="1.5rem"
+		>
+			{`Page ${page}`}
+		</Text>
 		<Button
-			icon={<ChevronRightIcon />}
+			leftIcon={<ChevronRightIcon fontSize="5rem" />}
 			bg="#000"
 			hoverColor="#f5c518"
 			event={onNextPage}
