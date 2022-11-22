@@ -20,8 +20,8 @@ export const getMovieSearch = async (page: number, search: string) => {
 	return json;
 };
 
-export const getTVShows = async(id: number, page: number) => {
+/* export const getTVShows = async (id: number, page: number) => {
 	const url = await fetch(`${baseUrl}/tv/popular?api_key=${key}en-US&page=${page}`);
 	const json = await url.json();
 	return json;
-};
+};*/
