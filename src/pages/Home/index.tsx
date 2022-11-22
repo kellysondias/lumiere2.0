@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { imgUrl } from "../../services/variables";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/footer/footer";
-import { MovieCard } from "./styles";
-import "../../css/font-awesome-min.css";
 import { PageMenu } from "../../components/page-menu/page-menu";
 import { Movies } from "../../components/movies/movies";
 import { useLocalObservable, observer } from "mobx-react-lite";
 import { Store } from "./store";
-import { Flex, List, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Box, Flex, Image, ListItem, Spinner, Text } from "@chakra-ui/react";
+import { CardList } from "../../components/card-list/card-list";
 
 const Home: React.FC = () => {
 	const store = useLocalObservable(() => new Store());
@@ -30,15 +29,10 @@ const Home: React.FC = () => {
 					/>
 
 					<Flex
-						// direction="column"
+						direction="column"
 						justify="center"
 					>
-						<List
-							w="100%"
-							bg="red"
-							display="grid"
-							gridTemplateRows="repeat(auto-fit, minmax(250px, 1fr))"
-						>
+						<CardList>
 							{store.moviesShelf.items.length === 0 ? (
 								<Spinner />
 							) : (
@@ -47,28 +41,32 @@ const Home: React.FC = () => {
 
 									return (
 										<Link key={index} to={`/movie/${movie.id}`}>
-											<MovieCard>
-												<div>
-													<div>
-														<img
+											<ListItem>
+												<Box>
+													<Box
+														maxW={200}
+														w="100%"
+													>
+														<Image
+															w={200}
+															height={280}
 															src={`${imgUrl}${movie.poster_path}`}
 															alt={`${movie.title}'s poster`}
 														/>
-													</div>
-													<div>
-														<div>
-															<i className="fa-solid fa-star" />
+													</Box>
+													<Box bg="rebeccapurple" p="1rem">
+														<Box fontSize="1.6rem">
 															<span>{rating}</span>
-														</div>
-														<span>{movie.title}</span>
-													</div>
-												</div>
-											</MovieCard>
+														</Box>
+														<Text>{movie.title}</Text>
+													</Box>
+												</Box>
+											</ListItem>
 										</Link>
 									);
 								})
 							)}
-						</List>
+						</CardList>
 					</Flex>
 
 					<PageMenu

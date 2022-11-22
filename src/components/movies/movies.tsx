@@ -1,11 +1,11 @@
 import React from "react";
 import { Flex, Heading, Text } from "@chakra-ui/react";
+import "@fontsource/noto-sans/300.css";
+import "@fontsource/noto-sans/400.css";
+import "@fontsource/noto-sans/500.css";
 
-interface IProps {
-	children: JSX.Element;
-}
 
-export const Movies = ({children}: IProps) => (
+export const Movies = (props: any) => (
 	<Flex
 		direction="column"
 		align="center"
@@ -15,15 +15,15 @@ export const Movies = ({children}: IProps) => (
 		position="relative"
 		m="0 auto"
 		mt="50px"
+		fontFamily="'Noto Sans', sans-serif"
 	>
 		<Heading
 			size="2xl"
-			color="#f5c518"
 			fontSize="3.2rem"
 			fontWeight="500"
 			m="2rem auto"
 		>
-			Featured Movies
+			Movies & TV Shows
 		</Heading>
 
 		<Text
@@ -31,12 +31,10 @@ export const Movies = ({children}: IProps) => (
 			fontSize="xl"
 			textAlign="center"
 		>
-			Here you can find all the movies in our database organized by what&apos;s
-			recently trending among movie goers 😉 .
+			Movies & TV Shows organized by what&apos;s
+			recently trending.
 		</Text>
 
-		<>
-			{children}
-		</>
+		{props.children}
 	</Flex>
 );

@@ -15,6 +15,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/lato": "^4.5.10",
+    "@fontsource/noto-sans": "^4.5.11",
     "@startapp/mobx-utils": "^1.1.564817228",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",

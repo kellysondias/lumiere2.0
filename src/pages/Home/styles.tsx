@@ -68,15 +68,11 @@ export const MoviesSection = styled.section`
     padding: 0;
     margin: 0 auto;
   }
-
-  .unfound {
-    margin: 1.7rem auto;
-    font-size: 1.5rem;
-  }
 `;
 
 export const MovieCard = styled.li`
-  width: 200px;
+  max-width: 200px;
+  width: 100%
   margin: 0 1rem 1rem 1rem;
   background-color: #1a1a1a;
   list-style: none;
