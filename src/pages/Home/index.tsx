@@ -33,7 +33,7 @@ const Home: React.FC = () => {
 	const responsive = {
 		0: { items: 1 },
 		568: { items: 2 },
-		1024: { items: 3 },
+		1024: { items: 5 },
 	};
 
 	return (
@@ -72,43 +72,45 @@ const Home: React.FC = () => {
 							{store.moviesShelf.items.length === 0 ? (
 								<Spinner />
 							) : (
-								<AliceCarousel
-									disableDotsControls
-									infinite
-									keyboardNavigation
-									responsive={responsive}
-								>
-									{
-										store.moviesShelf.items.map((movie, index) => {
-											const rating = movie.vote_average.toFixed(1);
+								<>
+									<AliceCarousel
+										responsive={responsive}
+										keyboardNavigation
+										disableDotsControls
+										infinite
+									>
+										{
+											store.moviesShelf.items.map((movie, index) => {
+												const rating = movie.vote_average.toFixed(1);
 
-											return (
-												<Link key={index} to={`/movie/${movie.id}`}>
-													<ListItem>
-														<Box>
-															<Box
-																w={200}
-															>
-																<Image
+												return (
+													<Link key={index} to={`/movie/${movie.id}`}>
+														<ListItem>
+															<Box>
+																<Box
 																	w={200}
-																	height={280}
-																	src={`${imgUrl}${movie.poster_path}`}
-																	alt={`${movie.title}'s poster`}
-																/>
-															</Box>
-															<Box w={200} bg="rebeccapurple" p="1rem">
-																<Box fontSize="1.6rem">
-																	<Text>{rating}</Text>
+																>
+																	<Image
+																		w={200}
+																		height={280}
+																		src={`${imgUrl}${movie.poster_path}`}
+																		alt={`${movie.title}'s poster`}
+																	/>
 																</Box>
-																<Text fontSize={8}>{movie.title}</Text>
+																<Box w={200} bg="rebeccapurple" p="1rem">
+																	<Box fontSize="1.6rem">
+																		<Text>{rating}</Text>
+																	</Box>
+																	<Text fontSize={8}>{movie.title}</Text>
+																</Box>
 															</Box>
-														</Box>
-													</ListItem>
-												</Link>
-											);
-										})
-									}
-								</AliceCarousel>
+														</ListItem>
+													</Link>
+												);
+											})
+										}
+									</AliceCarousel>
+								</>
 							)}
 						</CardList>
 					</Flex>
