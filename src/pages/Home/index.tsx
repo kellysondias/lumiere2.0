@@ -22,11 +22,6 @@ import "react-alice-carousel/lib/alice-carousel.css";
 const Home: React.FC = () => {
 	const store = useLocalObservable(() => new Store());
 
-	const responsive = {
-		0: { items: 1 },
-		568: { items: 2 },
-		1024: { items: 5 },
-	};
 
 	useEffect(() => {
 		store.moviesShelf.fetchPage(1);
@@ -34,6 +29,12 @@ const Home: React.FC = () => {
 
 	// eslint-disable-next-line no-console
 	// console.log(store.moviesShelf.items[0].backdrop_path);
+
+	const responsive = {
+		0: { items: 1 },
+		568: { items: 2 },
+		1024: { items: 3 },
+	};
 
 	return (
 		<Movies>
@@ -72,7 +73,9 @@ const Home: React.FC = () => {
 								<Spinner />
 							) : (
 								<AliceCarousel
+									disableDotsControls
 									infinite
+									keyboardNavigation
 									responsive={responsive}
 								>
 									{
@@ -81,7 +84,7 @@ const Home: React.FC = () => {
 
 											return (
 												<Link key={index} to={`/movie/${movie.id}`}>
-													<ListItem gap={15}>
+													<ListItem>
 														<Box>
 															<Box
 																w={200}
