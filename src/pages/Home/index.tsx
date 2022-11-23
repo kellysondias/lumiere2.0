@@ -85,8 +85,10 @@ const Home: React.FC = () => {
 
 												return (
 													<Link key={index} to={`/movie/${movie.id}`}>
-														<ListItem>
-															<Box>
+														<>
+															<Box
+																p="2rem"
+															>
 																<Box
 																	w={200}
 																>
@@ -104,7 +106,7 @@ const Home: React.FC = () => {
 																	<Text fontSize={8}>{movie.title}</Text>
 																</Box>
 															</Box>
-														</ListItem>
+														</>
 													</Link>
 												);
 											})

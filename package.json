@@ -41,7 +41,6 @@
     "react-alice-carousel": "^2.6.6",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
-    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.4.3",
     "styled-components": "^5.3.6",
     "typescript": "^4.9.3"
