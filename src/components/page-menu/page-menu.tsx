@@ -21,7 +21,6 @@ export const PageMenu: React.FC<IProps> = ({
 		<Button
 			leftIcon={<ChevronLeftIcon fontSize="5rem" />}
 			bg="#000"
-			hoverColor="#f5c518"
 			event={onPreviousPage}
 		/>
 		<Text
@@ -33,7 +32,6 @@ export const PageMenu: React.FC<IProps> = ({
 		<Button
 			leftIcon={<ChevronRightIcon fontSize="5rem" />}
 			bg="#000"
-			hoverColor="#f5c518"
 			event={onNextPage}
 		/>
 	</Menu>

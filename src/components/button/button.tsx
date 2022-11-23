@@ -5,7 +5,6 @@ export const Button = (props: any) => (
 	<StyledButton
 		css={{
 			":hover":{
-				color: `${props.hoverColor}`,
 				backgroundColor: "transparent",
 			},
 		}}

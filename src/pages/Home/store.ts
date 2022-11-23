@@ -18,5 +18,9 @@ export class Store {
 
 	public search= "";
 
+	public setSearch(e: string) {
+		this.search = e;
+	}
+
 	public moviesShelf: PaginatedListShelf<IMovies>;
 }
