@@ -16,6 +16,9 @@ export const CardList = (props: any) => (
 		css={{
 			":hover": {
 				transform: "scale(1.1)",
+				div: {
+					opacity: 0,
+				},
 			},
 		}}
 	>

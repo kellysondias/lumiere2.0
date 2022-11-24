@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
 	Flex,
 	Spacer,
@@ -11,11 +11,17 @@ import {
 import { Link } from "react-router-dom";
 import { SearchIcon } from "@chakra-ui/icons";
 import { Store } from "../../pages/Home/store";
-import { useLocalObservable} from "mobx-react-lite";
+import { observer, useLocalObservable} from "mobx-react-lite";
+import { AttributeShelf } from "@startapp/mobx-utils";
 
-export const Header: React.FC = () => {
+interface IProps {
+	searchAttributeShelf: AttributeShelf<string>;
+	onSearchClick: () => void;
+}
+
+
+const Header: React.FC <IProps> = (props) => {
 	const store = useLocalObservable(() => new Store());
-	const [search, setSearch] = useState("");
 	// eslint-disable-next-line no-console
 	console.log("SEARCH:",store.search);
 
@@ -44,9 +50,9 @@ export const Header: React.FC = () => {
 					fontSize="md"
 					placeholder="FILTER"
 					id="search-bar"
-					value={store.search}
+					value={props.searchAttributeShelf.value}
 					// eslint-disable-next-line no-console
-					onChange={(e) => store.setSearch(e.target.value)}
+					onChange={(e) => props.searchAttributeShelf.setValue(e.target.value)}
 				/>
 				<InputRightAddon
 					bg="transparent"
@@ -54,9 +60,13 @@ export const Header: React.FC = () => {
 				>
 					<SearchIcon
 						fontSize="10px"
+						cursor="pointer"
+						onClick={props.onSearchClick}
 					/>
 				</InputRightAddon>
 			</InputGroup>
 		</Flex>
 	);
 };
+
+export default observer(Header);

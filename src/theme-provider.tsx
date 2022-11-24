@@ -22,10 +22,10 @@ export const themeProvider = extendTheme({
 				m: "0 auto",
 			},
 			body: {
-				bg: "#000",
 				color: "#fff",
 				fontFamily:"'Lato', sans-serif",
 				fontWeight:"300",
+				backgroundColor: "#000",
 			},
 			a: {
 				textDecoration: "none",
