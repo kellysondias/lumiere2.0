@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { imgUrl } from "../../services/variables";
@@ -24,6 +25,10 @@ const Movie: React.FC = () => {
 	useEffect(() => {
 		store.movieShelf.fetchModel();
 	}, [store.movieShelf]);
+
+	if (store.movieShelf.hasModel) {
+		console.log(store.movieShelf.fetchedModel);
+	}
 
 	return (
 		<Flex

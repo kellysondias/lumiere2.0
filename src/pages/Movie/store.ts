@@ -6,7 +6,6 @@ import { getMovie } from "../../services/endpoints";
 export class Store {
   	constructor(id?: string) {
     	makeAutoObservable(this);
-
     	this.movieShelf = new FetchModelShelf(id, getMovie);
   	}
 
