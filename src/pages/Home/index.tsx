@@ -93,14 +93,15 @@ const Home: React.FC = () => {
 					>
 						<Heading
 							p="30px 0"
-							fontSize="4xl"
+							fontSize="6xl"
 							fontWeight={500}
 						>
 							The best of Cinema
 						</Heading>
 						<Text
-							pb="1.5rem"
-							fontSize="xl"
+							fontSize="4xl"
+							w="80%"
+							textAlign="center"
 						>
 							Watch thousands of movies online or on your Smart TV, game console, PC, Mac, mobile phone, tablet and more. Start your free trial today.
 						</Text>
@@ -108,6 +109,7 @@ const Home: React.FC = () => {
 
 					{store.popularMoviesShelf.items[0] &&
 						<Flex
+							pt="5rem"
 							justify="center"
 							direction="column"
 						>
@@ -172,8 +174,8 @@ const Home: React.FC = () => {
 								<>
 									<Text
 										textAlign="center"
-										p="1rem"
 										fontSize="4xl"
+										fontWeight={500}
 									>
 										Trending Movies
 									</Text>
@@ -232,7 +234,7 @@ const Home: React.FC = () => {
 									</Flex>
 									<Text
 										textAlign="center"
-										p="1rem"
+										fontWeight={500}
 										fontSize="4xl"
 									>
 										Top Rated Movies

@@ -39,7 +39,7 @@ const Movie: React.FC = () => {
 	return (
 		<Box
 			transition="0.2s ease-in"
-			bg={`linear-gradient(transparent 5%, ${colors? colors[0]: "#000"})`}
+			bg={colors && `linear-gradient(to bottom, ${colors[0]}, ${colors[1]}, ${colors[2]})`}
 		>
 			<Header
 				searchAttributeShelf={store.search}
@@ -92,7 +92,7 @@ const Movie: React.FC = () => {
 									<Text
 										as="span"
 										fontSize="6xl"
-										color="#979394c2"
+										color="#000"
 									>
 										{store.movieShelf.fetchedModel.release_date.slice(0,4)}
 									</Text>
@@ -100,7 +100,7 @@ const Movie: React.FC = () => {
 
 								<Box
 									as="header"
-									color="#979394c2"
+									color="#000"
 									p="0.5rem 0 1.5rem 0"
 								>
 									<Flex
@@ -130,7 +130,7 @@ const Movie: React.FC = () => {
 									align="center"
 								>
 									<Text
-										color="#979394c2"
+										color="#000"
 										fontSize="2xl"
 										mb="2.5rem"
 									>
@@ -151,8 +151,8 @@ const Movie: React.FC = () => {
 										variant="outline"
 										w="72px"
 										p="1.5rem 5rem"
-										color="#ffffffbf"
-										borderColor="#ffffffbf"
+										color="#000"
+										borderColor="#000"
 									/>
 								</Link>
 
