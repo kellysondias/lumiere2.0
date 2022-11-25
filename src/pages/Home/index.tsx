@@ -49,217 +49,234 @@ const Home: React.FC = () => {
 				onSearchClick={() => store.searchShelf.fetchPage(1)}
 			/>
 
-			<Box
-				transition="0.2s ease-in"
-				bg={`linear-gradient(transparent 5%, ${colors? colors[0]: "#000"})`}
-			>
-				<Flex
-					justify="center"
-					align="center"
-					direction="column"
+			{store.popularMoviesShelf.items[0] &&
+				<Box
+					transition="5s ease-in"
+					bg={`linear-gradient(transparent 5%, ${colors? colors[0]: "#000"})`}
 				>
-					<Heading
-						p="30px 0"
-						fontSize="4xl"
-						fontWeight={500}
+					<Box
+						p="30rem 5rem"
+						bg={`url(${wallpaper}) no-repeat center center`}
+						position="relative"
+						backgroundSize="cover"
 					>
-						The best of Cinema
-					</Heading>
-					<Text
-						pb="1.5rem"
-						fontSize="xl"
-						color="#979394de"
-					>
-						Watch thousands of movies online or on your Smart TV, game console, PC, Mac, mobile phone, tablet and more. Start your free trial today.
-					</Text>
-				</Flex>
+						<Flex direction="column">
+							<Heading size="3xl" pb="1.5rem">
+								{store.popularMoviesShelf.items[0].title}
+							</Heading>
+							<Text fontWeight={500} fontSize="2xl" w="50%">
+								{store.popularMoviesShelf.items[0].overview}
+							</Text>
+						</Flex>
+					</Box>
 
-				{store.popularMoviesShelf.items[0] &&
 					<Flex
 						justify="center"
+						align="center"
 						direction="column"
 					>
-						{store.searchShelf.items.length !== 0 ?
-							<>
-								<Flex
-									m="2rem"
-								>
-									{store.searchShelf.loader.isLoading ? (
-										<Flex
-											m="auto"
-											align="center"
-											justify="center"
-										>
-											<Spinner />
-										</Flex>
-									) : (
-										<Flex
-											wrap="wrap"
-											justify="center"
-											align="center"
-										>
-											{store.searchShelf.items.map((movie, index) => (
-												<Link
-													style={{width:"200px"}}
-													key={index}
-													to={`/movie/${movie.id}`}
+						<Heading
+							p="30px 0"
+							fontSize="4xl"
+							fontWeight={500}
+						>
+							The best of Cinema
+						</Heading>
+						<Text
+							pb="1.5rem"
+							fontSize="xl"
+							color="#979394de"
+						>
+							Watch thousands of movies online or on your Smart TV, game console, PC, Mac, mobile phone, tablet and more. Start your free trial today.
+						</Text>
+					</Flex>
+
+					{store.popularMoviesShelf.items[0] &&
+						<Flex
+							justify="center"
+							direction="column"
+						>
+							{store.searchShelf.items.length !== 0 ?
+								<>
+									<Flex
+										m="2rem"
+									>
+										{store.searchShelf.loader.isLoading ? (
+											<Flex
+												m="auto"
+												align="center"
+												justify="center"
+											>
+												<Spinner />
+											</Flex>
+										) : (
+											<Flex
+												wrap="wrap"
+												justify="center"
+												align="center"
+											>
+												{store.searchShelf.items.map((movie, index) => (
+													<Link
+														style={{width:"200px"}}
+														key={index}
+														to={`/movie/${movie.id}`}
+													>
+														<CardList key={index}>
+															<Image
+																src={`${imgUrl}${movie.poster_path}`}
+																alt={movie.title}
+																boxSize={300}
+															/>
+															<CardInfo>
+																<Text
+																	fontWeight={500}
+																	mb={3}
+																>
+																	{movie.title}
+																</Text>
+																<Text>
+																	{movie.release_date.slice(0, 4)}
+																</Text>
+																<Text
+																	position="absolute"
+																	left={15}
+																	bottom="20px"
+																>
+																	<StarIcon color="#979394" m="0 0.4rem 0.4rem 0" />
+																	{movie.vote_average.toFixed(1)}
+																</Text>
+															</CardInfo>
+														</CardList>
+													</Link>
+												))}
+											</Flex>
+										)}
+									</Flex>
+								</>
+								:
+								<>
+									<Text
+										textAlign="center"
+										p="1rem"
+										fontSize="4xl"
+									>
+										Trending Movies
+									</Text>
+									<Flex
+										m="2rem"
+									>
+										{store.popularMoviesShelf.loader.isLoading ? (
+											<Flex
+												m="auto"
+												align="center"
+												justify="center"
+											>
+												<Spinner />
+											</Flex>
+										) : (
+											<>
+												<AliceCarousel
+													responsive={responsive}
+													keyboardNavigation
+													disableDotsControls
+													infinite
 												>
-													<CardList key={index}>
-														<Image
-															src={`${imgUrl}${movie.poster_path}`}
-															alt={movie.title}
-															boxSize={300}
-														/>
-														<CardInfo>
-															<Text
-																fontWeight={500}
-																mb={3}
-															>
-																{movie.title}
-															</Text>
-															<Text>
-																{movie.release_date.slice(0, 4)}
-															</Text>
-															<Text
-																position="absolute"
-																left={15}
-																bottom="20px"
-															>
-																<StarIcon color="#979394" m="0 0.4rem 0.4rem 0" />
-																{movie.vote_average.toFixed(1)}
-															</Text>
-														</CardInfo>
-													</CardList>
-												</Link>
-											))}
-										</Flex>
-									)}
-								</Flex>
-							</>
-							:
-							<>
-								<Text
-									textAlign="center"
-									p="1rem"
-									fontSize="4xl"
-								>
-									Trending Movies
-								</Text>
-								<Flex
-									m="2rem"
-								>
-									{store.popularMoviesShelf.loader.isLoading ? (
-										<Flex
-											m="auto"
-											align="center"
-											justify="center"
-										>
-											<Spinner />
-										</Flex>
-									) : (
-										<>
-											<AliceCarousel
-												responsive={responsive}
-												keyboardNavigation
-												disableDotsControls
-												infinite
+													{store.popularMoviesShelf.items.map((movie, index) => (
+														<CardList key={index}>
+															<Link to={`/movie/${movie.id}`}>
+																<Image
+																	src={`${imgUrl}${movie.poster_path}`}
+																	alt={movie.title}
+																	boxSize={300}
+																/>
+															</Link>
+															<CardInfo>
+																<Text
+																	fontWeight={500}
+																	mb={3}
+																>
+																	{movie.title}
+																</Text>
+																<Text>
+																	{movie.release_date.slice(0, 4)}
+																</Text>
+																<Text
+																	position="absolute"
+																	left={15}
+																	bottom="20px"
+																>
+																	<StarIcon color="#979394" m="0 0.4rem 0.4rem 0" />
+																	{movie.vote_average.toFixed(1)}
+																</Text>
+															</CardInfo>
+														</CardList>
+													))}
+												</AliceCarousel>
+											</>
+										)}
+									</Flex>
+									<Text
+										textAlign="center"
+										p="1rem"
+										fontSize="4xl"
+									>
+										Top Rated Movies
+									</Text>
+									<Flex m="2rem">
+										{store.topMoviesShelf.loader.isLoading ? (
+											<Flex
+												m="auto"
+												align="center"
+												justify="center"
 											>
-												{store.popularMoviesShelf.items.map((movie, index) => (
-													<CardList key={index}>
-														<Link to={`/movie/${movie.id}`}>
-															<Image
-																src={`${imgUrl}${movie.poster_path}`}
-																alt={movie.title}
-																boxSize={300}
-															/>
-														</Link>
-														<CardInfo>
-															<Text
-																fontWeight={500}
-																mb={3}
-															>
-																{movie.title}
-															</Text>
-															<Text>
-																{movie.release_date.slice(0, 4)}
-															</Text>
-															<Text
-																position="absolute"
-																left={15}
-																bottom="20px"
-															>
-																<StarIcon color="#979394" m="0 0.4rem 0.4rem 0" />
-																{movie.vote_average.toFixed(1)}
-															</Text>
-														</CardInfo>
-													</CardList>
-												))}
-											</AliceCarousel>
-										</>
-									)}
-								</Flex>
-								<Text
-									textAlign="center"
-									p="1rem"
-									fontSize="4xl"
-								>
-									Top Rated Movies
-								</Text>
-								<Flex m="2rem">
-									{store.topMoviesShelf.loader.isLoading ? (
-										<Flex
-											m="auto"
-											align="center"
-											justify="center"
-										>
-											<Spinner />
-										</Flex>
-									) : (
-										<>
-											<AliceCarousel
-												responsive={responsive}
-												keyboardNavigation
-												disableDotsControls
-												infinite
-											>
-												{store.topMoviesShelf.items.map((movie, index) => (
-													<CardList key={index}>
-														<Link to={`/movie/${movie.id}`}>
-															<Image
-																src={`${imgUrl}${movie.poster_path}`}
-																alt={movie.title}
-																boxSize={300}
-															/>
-														</Link>
-														<CardInfo>
-															<Text
-																fontWeight={500}
-																mb={3}
-															>
-																{movie.title}
-															</Text>
-															<Text>
-																{movie.release_date.slice(0, 4)}
-															</Text>
-															<Text
-																position="absolute"
-																left={15}
-																bottom="20px"
-															>
-																<StarIcon color="#979394" m="0 0.4rem 0.4rem 0" />
-																{movie.vote_average.toFixed(1)}
-															</Text>
-														</CardInfo>
-													</CardList>
-												))}
-											</AliceCarousel>
-										</>
-									)}
-								</Flex>
-							</>}
-					</Flex>}
-				<Footer />
-			</Box>
+												<Spinner />
+											</Flex>
+										) : (
+											<>
+												<AliceCarousel
+													responsive={responsive}
+													keyboardNavigation
+													disableDotsControls
+													infinite
+												>
+													{store.topMoviesShelf.items.map((movie, index) => (
+														<CardList key={index}>
+															<Link to={`/movie/${movie.id}`}>
+																<Image
+																	src={`${imgUrl}${movie.poster_path}`}
+																	alt={movie.title}
+																	boxSize={300}
+																/>
+															</Link>
+															<CardInfo>
+																<Text
+																	fontWeight={500}
+																	mb={3}
+																>
+																	{movie.title}
+																</Text>
+																<Text>
+																	{movie.release_date.slice(0, 4)}
+																</Text>
+																<Text
+																	position="absolute"
+																	left={15}
+																	bottom="20px"
+																>
+																	<StarIcon color="#979394" m="0 0.4rem 0.4rem 0" />
+																	{movie.vote_average.toFixed(1)}
+																</Text>
+															</CardInfo>
+														</CardList>
+													))}
+												</AliceCarousel>
+											</>
+										)}
+									</Flex>
+								</>}
+						</Flex>}
+					<Footer />
+				</Box>}
 		</>
 	);
 };
