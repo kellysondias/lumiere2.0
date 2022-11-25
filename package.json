@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "code-check": "yarn eslint ./src && yarn tsc"
   },
-  "proxy": "http://localhost:3000"
-  ,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.12",
     "@chakra-ui/react": "^2.4.1",
@@ -35,6 +34,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "font-awesome": "^4.7.0",
     "framer-motion": "^6",
     "mobx": "^6.7.0",
     "mobx-react-lite": "^3.4.0",

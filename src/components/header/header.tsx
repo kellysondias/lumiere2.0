@@ -10,36 +10,31 @@ import {
 	from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { SearchIcon } from "@chakra-ui/icons";
-import { Store } from "../../pages/Home/store";
-import { observer, useLocalObservable} from "mobx-react-lite";
+import { observer} from "mobx-react-lite";
 import { AttributeShelf } from "@startapp/mobx-utils";
 
 interface IProps {
 	searchAttributeShelf: AttributeShelf<string>;
 	onSearchClick: () => void;
+	isMovie?: boolean;
 }
 
-
-const Header: React.FC <IProps> = (props) => {
-	const store = useLocalObservable(() => new Store());
-	// eslint-disable-next-line no-console
-	console.log("SEARCH:",store.search);
-
-	return (
-		<Flex
-			as="header"
-			justify="center"
-			align="center"
-			p="1.7rem 5rem"
-			bg="transparent"
-		>
-			<Link to="/">
-				<Heading
-					fontWeight="400"
-					size="md"
-				>LUMIÈRE
-				</Heading>
-			</Link>
+const Header: React.FC <IProps> = (props) => (
+	<Flex
+		as="header"
+		justify="center"
+		align="center"
+		p="1.7rem 5rem"
+		bg="transparent"
+	>
+		<Link to="/">
+			<Heading
+				fontWeight="400"
+				size="md"
+			>LUMIÈRE
+			</Heading>
+		</Link>
+		{!props.isMovie &&
 			<InputGroup>
 				<Spacer />
 				<Input
@@ -64,9 +59,8 @@ const Header: React.FC <IProps> = (props) => {
 						onClick={props.onSearchClick}
 					/>
 				</InputRightAddon>
-			</InputGroup>
-		</Flex>
-	);
-};
+			</InputGroup>}
+	</Flex>
+);
 
 export default observer(Header);

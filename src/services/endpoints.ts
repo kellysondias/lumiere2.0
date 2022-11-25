@@ -21,6 +21,6 @@ export const getMovie = async (id: any) => {
 export const getMovieSearch = async (page: number, search: string) => {
 	const url = await fetch(`${baseUrl}/search/movie?api_key=${key}&page=${page}&query=${search}`);
 	const json = await url.json();
-	return json;
+	return json.results;
 };
 

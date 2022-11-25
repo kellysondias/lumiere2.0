@@ -17,6 +17,7 @@ export interface IMovie {
 	tagline: string;
 	title: string;
 	original_title: string;
+	backdrop_path: string;
 }
 
 export interface IGenres {
