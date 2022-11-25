@@ -14,25 +14,21 @@ export const Footer: React.FC = () => (
 							target="_blank"
 							link="https://www.linkedin.com/in/kellysondias/"
 							icon="fab fa-linkedin-in"
-							hover="#f6c600"
 						/>
 						<Icon
 							target="_blank"
 							link="https://wa.me/5543999702430"
 							icon="fab fa-whatsapp"
-							hover="#f6c600"
 						/>
 						<Icon
 							target="_blank"
 							link="https://github.com/kellysondias"
 							icon="fab fa-github"
-							hover="#f6c600"
 						/>
 						<Icon
 							target="_blank"
 							link="https://www.instagram.com/kellysondias/"
 							icon="fab fa-instagram"
-							hover="#f6c600"
 						/>
 					</>
 				</Icons>

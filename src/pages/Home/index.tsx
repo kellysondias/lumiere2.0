@@ -20,6 +20,7 @@ import { CardList } from "../../components/card-list/card-list";
 import UseImageColor from "use-image-color";
 import Header from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
+import { Button } from "../../components/button/button";
 
 const Home: React.FC = () => {
 	const store = useLocalObservable(() => new Store());
@@ -52,7 +53,7 @@ const Home: React.FC = () => {
 			{store.popularMoviesShelf.items[0] &&
 				<Box
 					transition="5s ease-in"
-					bg={`linear-gradient(transparent 5%, ${colors? colors[0]: "#000"})`}
+					bg={colors && `linear-gradient(to bottom, ${colors[0]}, ${colors[1]}, ${colors[2]})`}
 				>
 					<Box
 						p="30rem 5rem"
@@ -60,13 +61,28 @@ const Home: React.FC = () => {
 						position="relative"
 						backgroundSize="cover"
 					>
-						<Flex direction="column">
+						<Flex color="#fff"  direction="column">
 							<Heading size="3xl" pb="1.5rem">
 								{store.popularMoviesShelf.items[0].title}
 							</Heading>
 							<Text fontWeight={500} fontSize="2xl" w="50%">
 								{store.popularMoviesShelf.items[0].overview}
 							</Text>
+							<Link
+								to={`/movie/${store.popularMoviesShelf.items[0].id}`}
+							>
+								<Button
+									text="SEE MOVIE"
+									background="#000"
+									marginTop="1.5rem"
+									fontSize="md"
+									variant="outline"
+									w="72px"
+									p="1.5rem 5rem"
+									color="#ffffffbf"
+									borderColor="#ffffffbf"
+								/>
+							</Link>
 						</Flex>
 					</Box>
 
@@ -85,7 +101,6 @@ const Home: React.FC = () => {
 						<Text
 							pb="1.5rem"
 							fontSize="xl"
-							color="#979394de"
 						>
 							Watch thousands of movies online or on your Smart TV, game console, PC, Mac, mobile phone, tablet and more. Start your free trial today.
 						</Text>

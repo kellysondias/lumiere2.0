@@ -22,7 +22,7 @@ export const themeProvider = extendTheme({
 				m: "0 auto",
 			},
 			body: {
-				color: "#fff",
+				color: "#000",
 				fontFamily:"'Lato', sans-serif",
 				fontWeight:"300",
 				backgroundColor: "#000",

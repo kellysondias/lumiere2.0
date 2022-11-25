@@ -22,7 +22,7 @@ export const Icon = ({icon, link, target, hover}: IProps) => (
 			m="1.5rem"
 			alignItems="center"
 			text-align="center"
-			color="#fff"
+			color="#000"
 			fontSize="2.5rem"
 			transition="0.2s ease-in-out"
 		>
