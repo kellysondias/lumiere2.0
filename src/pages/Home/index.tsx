@@ -14,7 +14,7 @@ import { observer, useLocalObservable } from "mobx-react-lite";
 import { Store } from "./store";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import { imgUrl } from "../../services/variables";
+import { imgUrl, backdropUrl } from "../../services/variables";
 import { CardInfo } from "../../components/card-info/card-info";
 import { CardList } from "../../components/card-list/card-list";
 import UseImageColor from "use-image-color";
@@ -36,11 +36,11 @@ const Home: React.FC = () => {
 		store.searchShelf.fetchPage(1);
 	}, [store]);
 
-	const wallpaper = (store.popularMoviesShelf.items[0] ? (imgUrl + store.popularMoviesShelf.items[0].backdrop_path) : "");
+	const wallpaper = (store.popularMoviesShelf.items[0] ? (backdropUrl + store.popularMoviesShelf.items[0].backdrop_path) : "");
 
 	const { colors } = UseImageColor(
 		store.popularMoviesShelf.items[0] ? (wallpaper) : "",
-		{ cors: true, colors: 3},
+		{ cors: true, colors: 5},
 	);
 
 	return (
