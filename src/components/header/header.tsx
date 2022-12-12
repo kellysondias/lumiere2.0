@@ -46,12 +46,12 @@ const Header: React.FC <IProps> = (props) => (
 					placeholder="FILTER"
 					id="search-bar"
 					value={props.searchAttributeShelf.value}
-					// eslint-disable-next-line no-console
 					onChange={(e) => props.searchAttributeShelf.setValue(e.target.value)}
 				/>
 				<InputRightAddon
 					bg="transparent"
 					border="none"
+					color="#fff"
 				>
 					<SearchIcon
 						fontSize="10px"

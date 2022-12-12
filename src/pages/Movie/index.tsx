@@ -42,9 +42,9 @@ const Movie: React.FC = () => {
 			bg={colors && `linear-gradient(to bottom, ${colors[0]}, ${colors[1]}, ${colors[2]})`}
 		>
 			<Header
+				isMovie
 				searchAttributeShelf={store.search}
 				onSearchClick={() => store.searchShelf.fetchPage(1)}
-				isMovie
 			/>
 			<Flex
 				direction="column"
@@ -53,6 +53,7 @@ const Movie: React.FC = () => {
 			>
 				{store.movieShelf.loader.isLoading ? (
 					<Spinner
+						color="#fff"
 						m="5rem auto"
 					/>
 				) : !store.movieShelf.hasModel ? (

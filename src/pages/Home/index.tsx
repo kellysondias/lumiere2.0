@@ -52,7 +52,6 @@ const Home: React.FC = () => {
 
 			{store.popularMoviesShelf.items[0] &&
 				<Box
-					transition="5s ease-in"
 					bg={colors && `linear-gradient(to bottom, ${colors[0]}, ${colors[1]}, ${colors[2]})`}
 				>
 					<Box
@@ -124,7 +123,7 @@ const Home: React.FC = () => {
 												align="center"
 												justify="center"
 											>
-												<Spinner />
+												<Spinner color="#fff" />
 											</Flex>
 										) : (
 											<Flex
